@@ -2,7 +2,7 @@
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 const inquirer = require("inquirer");
-const answers = 
+
 
 
 // TODO: Create an array of questions for user input
