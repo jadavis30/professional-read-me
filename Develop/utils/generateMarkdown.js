@@ -30,24 +30,46 @@ function renderLicenseSection(license) {
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(answers) {
-   return 
-   `"# ${answers.title}",
-   ## Description
-   ## Table of Contents
-   -[description](#description)
-   -[installation](#installation)
-   -[usage](#usage)
-   -[license](#license)
-   -[contributing](#description)
-   -[questions](#questions)
-  ## Installation
-  ## Usage
-  ## License 
+function generateMarkdown(userResponses) {
+   //title
+   let createMarkdown = 
+   `# ${userResponses.title}`
+   
+   `## Description
+   ${userResponses.description}`
 
-  ## Contributing
-  ## Questions
-`;
+   `## Table of Contents
+   -[Description](#description)
+   -[Installation](#installation)
+   -[Usage](#usage)
+   -[License](#license)
+   -[Contributing](#contributing)
+   -[Questions](#questions)`
+
+   `## Installation
+   ${userResponses.installation}`
+
+   `## Usage
+   ${userResponses.usage}`
+
+   `## License-don't forget to add badge here!
+   **
+   ${userResponses.license}`
+   renderLicenseLink();
+
+   `## Contributing
+   *The ins and outs of how to contribute.*
+   ${userResponses.contributing}`
+
+   `## Questions for the Developer
+   *Have a question? Contact me below and see what else I'm working on!*
+   ${userResponses.gituser}
+   ${userResponses.profile}
+   ${userResponses.email}`
+   
+   
+  
+
 }
 
 module.exports = generateMarkdown;

@@ -1,8 +1,10 @@
 # Professional README Generator Starter Code
 
 ## Description 
+The following application allows a developer to generate the basic structure of a professional ReadMe.
+By running the user through several prompts, the ReadMe is generated in markdown with user inputs and is sufficiently labeled.
 
-## Table of Contents (Optional)
+## Table of Contents
 
 * [Installation](#installation)
 * [Usage](#usage)

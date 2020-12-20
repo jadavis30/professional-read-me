@@ -52,6 +52,21 @@ inquirer.prompt([
         "The Unlicense"
     ],
 },
+{    
+    type: "input",
+    name: "gituser",
+    message:"What is your username on GitHub?"
+},
+{    
+    type: "input",
+    name: "profile",
+    message:"Link your GitHub profile address here."
+},
+{    
+    type: "input",
+    name: "email",
+    message:"What is your e-mail address?"
+},
 ])
 
 .then(answers => {
@@ -60,7 +75,6 @@ inquirer.prompt([
     if (err) {
         return console.log(err);
     }
-    generateMarkdown();
     //when making Readme, need to turn answers into text that goes under each section.
     console.log("ReadMe complete! Check 'your title'+README.md to see its output.")
     });
@@ -72,7 +86,9 @@ inquirer.prompt([
 
 // TODO: Create a function to initialize app
 function init() {
-
+    const userResponses = answers;
+    const markdown = generateMarkdown(userResponses);
+    writeFileAsync(answers.title+"_README.md", markdown);
 }
 
 // Function call to initialize app
