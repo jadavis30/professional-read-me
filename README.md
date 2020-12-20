@@ -28,3 +28,5 @@ Connie Tran--https://github.com/connietran-dev/readme-generator
 
 ## Future Development
 Replace user input for GitHub with GitHub API (Connie Tran)
+Create linkable button for licensure.
+Clean up array/url function for licensure link.

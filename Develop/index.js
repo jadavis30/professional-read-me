@@ -1,12 +1,12 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown");
-const inquirer = require("inquirer");
 const util = require("util");
+const inquirer = require("inquirer");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 
 
-// TODO: Create an array of questions for user input
+// Inquirer Prompt
 const questions = [
     {    
         type: "input",
@@ -32,7 +32,7 @@ const questions = [
     },
     {    
         type: "input",
-        name: "instructions",
+        name: "installation",
         message:"Detail the instructions to install.",
         validate: function (answer) {
             if (answer.length < 1) {
@@ -90,17 +90,6 @@ const questions = [
     },
     {    
         type: "input",
-        name: "profile",
-        message:"Link your GitHub profile address here.",
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return console.log("Please provide a link to your GitHub Repository.");
-            }
-            return true;
-        }
-    },
-    {    
-        type: "input",
         name: "email",
         message:"What is your e-mail address?",
         validate: function (answer) {
@@ -113,29 +102,29 @@ const questions = [
 ];
 
 
-//TODO: Create a function to write README file
+//Write README file
 function writeToFile(fileName, data) {   
     fs.writeFile(fileName, data, err => {
         if (err) {
             return console.log(err);
         }
-        //when making Readme, need to turn answers into text that goes under each section.
-        console.log("ReadMe complete! Check 'your title'+README.md to see its output.");
+        
+        console.log("ReadMe complete! Check README.md to see its output.");
     });
 };    
         
 const writeFileAsync = util.promisify(writeToFile);
    
 
-// TODO: Create a function to initialize app
+// Initialize app
 async function init() {
     try {
         //Inquirer ?s
-        const userResponses = inquirer.prompt(questions);
+        const userResponses = await inquirer.prompt(questions);
         //Pass Inquirer ?s to generateMarkdown
         const markdown = generateMarkdown(userResponses);
         //Write markdown to file
-        await writeFileAsync("userResponses.title+_README.md", markdown);
+        await writeFileAsync("README.md", markdown);
     } catch (error) {
         console.log(error);
     }    
